@@ -1,5 +1,5 @@
-import { Wallet } from "./logos/Wallet";
-import MainIcon from "./logos/NavIcon";
+import { Wallet } from "./Icons/Wallet";
+import MainIcon from "./Icons/NavIcon";
 import { Button } from "./ui/button";
 
 export const Header = () => {

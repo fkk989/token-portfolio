@@ -1,5 +1,6 @@
 "use client";
 
+import type { PortfolioState } from "@/redux/features/portfolio/portfolioTypes";
 import { useEffect, useRef, useState } from "react";
 import {
   PieChart,
@@ -9,15 +10,6 @@ import {
   Legend,
   type TooltipProps,
 } from "recharts";
-
-const data = [
-  { name: "Bitcoin (BTC)", value: 400, fill: "#22c55e" }, // green
-  { name: "Ethereum (ETH)", value: 300, fill: "#a78bfa" }, // purple
-  { name: "Solana (SOL)", value: 200, fill: "#60a5fa" }, // blue
-  { name: "Dogecoin (DOGE)", value: 278, fill: "#06b6d4" }, // cyan
-  { name: "Solana (SOL)", value: 189, fill: "#f97316" }, // orange
-  { name: "Solana (SOL)", value: 100, fill: "#f43f5e" }, // red
-];
 
 const CustomTooltip = ({ active, payload }: TooltipProps<any, any>) => {
   if (!active || !payload?.length) return null;
@@ -65,10 +57,14 @@ const renderLegend = (props: any) => {
   );
 };
 
-export default function DonutChart() {
+interface DonutChartProp {
+  data: PortfolioState["tokens"];
+}
+
+export const DonutChart: React.FC<DonutChartProp> = ({ data }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [pieWidth, setPieWidth] = useState<number>(0);
-
+  console.log("data: ", data);
   useEffect(() => {
     console.log("pieWidth: ", pieWidth);
   }, [pieWidth]);
@@ -76,7 +72,7 @@ export default function DonutChart() {
   return (
     <div
       ref={containerRef}
-      className="flex items-center justify-center w-full h-[400px]"
+      className="relative flex items-center justify-center w-full h-[400px]"
     >
       <ResponsiveContainer
         width="100%"
@@ -108,18 +104,20 @@ export default function DonutChart() {
                   });
                   resizeObserver.observe(target);
                 }
-              }, 3000);
+              }, 2300);
             }}
           />
           {pieWidth && (
             <Legend
               wrapperStyle={{
                 width: `calc(100% - ${pieWidth}px)`,
+                height: "100%",
                 position: "absolute",
                 right: 0,
                 paddingLeft: "25px",
+                overflowY: "scroll",
               }}
-              className="w-full md:hidden"
+              className="w-full"
               verticalAlign="middle"
               content={renderLegend}
             />
@@ -128,4 +126,4 @@ export default function DonutChart() {
       </ResponsiveContainer>
     </div>
   );
-}
+};

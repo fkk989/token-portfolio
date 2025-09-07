@@ -51,8 +51,10 @@
   --brand-accent-hover: #a9e851be;
   --body-bg: #212124;
   --surface-bg: #27272a;
+  --surface-bg-hover: #333336cf;
   --text-primary: #ffffff;
   --text-secondary: #a1a1aa;
+  --border-primary: #363638cf;
 }
 
 @media (prefers-color-scheme: light) {

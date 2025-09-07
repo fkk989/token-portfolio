@@ -1,10 +1,10 @@
 import type { Icons } from "@/lib/types";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 
 const NavIcon: React.FC<Icons> = (props) => {
   return (
     <svg
-      className={clsx("w-[28px] h-[28px]", props.className)}
+      className={cn("w-[28px] h-[28px]", props.className)}
       style={props.style}
       viewBox="0 0 28 28"
       fill="none"

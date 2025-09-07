@@ -1,18 +1,17 @@
-import { LineChart, Line, ResponsiveContainer } from "recharts"
+import { LineChart, Line, ResponsiveContainer } from "recharts";
 
 type SparklineProps = {
-  data: number[] // last 7 days prices
-}
+  data: number[]; // last 7 days prices
+};
 
 export function Sparkline({ data }: SparklineProps) {
-  
-  const chartData = data.map((value, i) => ({ day: i, price: value }))
+  const chartData = data.map((value, i) => ({ day: i + 1, price: value }));
 
   // check if stock went up or down checking if last > first
-  const isUp = data[data.length - 1] >= data[0]
+  const isUp = data[data.length - 1] >= data[0];
 
   return (
-    <div className="h-12 w-32">
+    <div className="h-[50px] w-[100px]">
       <ResponsiveContainer>
         <LineChart data={chartData}>
           <Line
@@ -25,5 +24,5 @@ export function Sparkline({ data }: SparklineProps) {
         </LineChart>
       </ResponsiveContainer>
     </div>
-  )
+  );
 }

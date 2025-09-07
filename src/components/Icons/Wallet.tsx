@@ -1,11 +1,11 @@
 import type { Icons } from "@/lib/types";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import React from "react";
 
 export const Wallet: React.FC<Icons> = (props) => {
   return (
     <svg
-      className={clsx("w-[15px] h-[16px]", props.className)}
+      className={cn("w-[15px] h-[16px]", props.className)}
       viewBox="0 0 15 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
