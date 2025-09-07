@@ -1,6 +1,7 @@
 export interface Token {
-  id:string;
+  id: string;
   name: string;
+  image:string;
   slug: string;
   price: number;
   change24h: number;
@@ -14,4 +15,4 @@ export interface Token {
 export interface PortfolioState {
   tokens: Token[];
 }
-export type TokenInput = Omit<Token, "holding" | "value" | "fill">;
+export type TokenInput = Omit<Token, "holding" | "value" | "fill" | "updating">;

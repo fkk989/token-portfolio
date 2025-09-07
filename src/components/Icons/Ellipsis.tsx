@@ -2,7 +2,7 @@ import type { Icons } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import React from "react";
 
-export const Eclips: React.FC<Icons> = (props) => {
+export const Ellipsis: React.FC<Icons> = (props) => {
   return (
     <svg
       className={cn("w-[16px] h-[16px]", props.className)}

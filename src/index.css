@@ -48,7 +48,8 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   --brand-accent: #a9e851;
-  --brand-accent-hover: #a9e851be;
+  --brand-accent-hover: #a9e851d8;
+  --brand-accent-hover2: #a9e8510f;
   --body-bg: #212124;
   --surface-bg: #27272a;
   --surface-bg-hover: #333336cf;
@@ -158,4 +159,13 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.box-shadow {
+  -webkit-box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.3);
+}
+.box-shadow-accent {
+  box-shadow: 0px 0px 0px 1px rgba(169, 232, 81, 1),
+    0px 0px 0px 4px rgba(169, 232, 81, 0.2);
 }

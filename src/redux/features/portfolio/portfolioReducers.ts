@@ -12,23 +12,40 @@ export function generateColorFromSlug(slug: string): string {
 }
 
 export const portfolioReducers = {
-  addToken: (state: PortfolioState, action: PayloadAction<TokenInput>) => {
-    const { id, name, slug, price, change24h, price7d } = action.payload;
-    const value = 0;
-    const fill = generateColorFromSlug(slug);
+  setTokens: (
+    state: PortfolioState,
+    action: PayloadAction<PortfolioState["tokens"]>
+  ) => {
+    state.tokens = action.payload;
+  },
 
-    state.tokens.push({
-      id,
-      name,
-      slug,
-      price,
-      change24h,
-      price7d,
-      holding: 0,
-      value,
-      fill,
-      updating: false,
-    });
+  addTokens: (state: PortfolioState, action: PayloadAction<TokenInput[]>) => {
+    const filteredTokens = action.payload.filter(
+      ({ id }) => !state.tokens.find((t) => t.id === id)
+    );
+
+    const tokens = filteredTokens.map(
+      ({ id, name, slug, price, change24h, price7d, image }) => {
+        const value = 0;
+        const fill = generateColorFromSlug(slug);
+        return {
+          id,
+          name,
+          slug,
+          price,
+          change24h,
+          price7d,
+          holding: 0,
+          value,
+          fill,
+          image,
+          updating: false,
+        };
+      }
+    );
+
+    state.tokens.push(...tokens);
+    localStorage.setItem("tokens", JSON.stringify(state.tokens));
   },
 
   updateToken: (
@@ -48,6 +65,7 @@ export const portfolioReducers = {
       }
       if (payload.updating !== undefined) token.updating = payload.updating;
     }
+    localStorage.setItem("tokens", JSON.stringify(state.tokens));
   },
 
   removeToken: (
@@ -57,5 +75,6 @@ export const portfolioReducers = {
     }>
   ) => {
     state.tokens = state.tokens.filter((t) => t.id !== action.payload.id);
+    localStorage.setItem("tokens", JSON.stringify(state.tokens));
   },
 };

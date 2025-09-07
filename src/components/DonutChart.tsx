@@ -39,20 +39,22 @@ const renderLegend = (props: any) => {
       className="w-full fade-in"
       style={{ listStyle: "none", margin: 0, padding: 0 }}
     >
-      {payload.map((entry: any, index: number) => (
-        <li
-          key={`item-${index}`}
-          style={{
-            color: entry.color,
-          }}
-          className="mb-[8px] text-[16px] font-[500] flex items-center justify-between"
-        >
-          <span>{entry.value}</span>{" "}
-          <span className="text-[var(--text-secondary)]">
-            {(entry.payload.percent * 100).toFixed(2)}%
-          </span>
-        </li>
-      ))}
+      {payload
+        .filter((entry: any) => entry.payload.value)
+        .map((entry: any, index: number) => (
+          <li
+            key={`item-${index}`}
+            style={{
+              color: entry.color,
+            }}
+            className="mb-[8px] text-[16px] font-[500] flex items-center justify-between"
+          >
+            <span>{entry.value}</span>{" "}
+            <span className="text-[var(--text-secondary)]">
+              {(entry.payload.percent * 100).toFixed(2)}%
+            </span>
+          </li>
+        ))}
     </ul>
   );
 };
@@ -64,7 +66,7 @@ interface DonutChartProp {
 export const DonutChart: React.FC<DonutChartProp> = ({ data }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [pieWidth, setPieWidth] = useState<number>(0);
-  console.log("data: ", data);
+
   useEffect(() => {
     console.log("pieWidth: ", pieWidth);
   }, [pieWidth]);
