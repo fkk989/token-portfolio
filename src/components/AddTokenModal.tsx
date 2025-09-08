@@ -91,8 +91,8 @@ export function AddTokenModal({
                   <li
                     key={token.id}
                     className={`w-full h-[44px]  flex items-center justify-between p-[5px] rounded-md cursor-pointer hover:bg-[var(--brand-accent-hover2)] ${selectedIds.includes(token.id)
-                        ? "bg-[var(--brand-accent-hover2)]"
-                        : ""
+                      ? "bg-[var(--brand-accent-hover2)]"
+                      : ""
                       }`}
                     onClick={() => {
                       if (selectedIds.includes(token.id)) {

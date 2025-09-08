@@ -3,8 +3,6 @@ import { Header } from "./components/Header";
 import { WatchList } from "./components/WatchList";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-import { Drawer, DrawerContent } from "./components/ui/drawer";
-import { Handle } from "vaul";
 import { WatchlistDrawer } from "./components/WatchListDrawer";
 
 function App() {
