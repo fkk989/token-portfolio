@@ -57,7 +57,7 @@ export function AddTokenModal({
     >
       <DialogContent
         showCloseButton={false}
-        className="w-[640px] max-h-[500px] flex flex-col justify-between  bg-[var(--body-bg)] text-white p-0 rounded-[12px] border-none"
+        className="w-[370px] max-sm:h-[480px] lg:w-[640px] max-h-[500px] flex flex-col justify-between  bg-[var(--body-bg)] text-white p-0 rounded-[12px] border-none"
       >
         <div className="flex flex-col gap-[20px]">
           <DialogHeader>
@@ -80,21 +80,20 @@ export function AddTokenModal({
               {loading
                 ? "Searching..."
                 : !search
-                ? "Trending"
-                : search && !searchedTokens.length
-                ? "No Result found"
-                : "Search Result"}
+                  ? "Trending"
+                  : search && !searchedTokens.length
+                    ? "No Result found"
+                    : "Search Result"}
             </div>
             {!loading ? (
               <ul className="w-full h-[300px] overflow-y-scroll flex flex-col gap-[10px]">
                 {tokensToRender.map((token) => (
                   <li
                     key={token.id}
-                    className={`w-full h-[44px]  flex items-center justify-between p-[5px] rounded-md cursor-pointer hover:bg-[var(--brand-accent-hover2)] ${
-                      selectedIds.includes(token.id)
+                    className={`w-full h-[44px]  flex items-center justify-between p-[5px] rounded-md cursor-pointer hover:bg-[var(--brand-accent-hover2)] ${selectedIds.includes(token.id)
                         ? "bg-[var(--brand-accent-hover2)]"
                         : ""
-                    }`}
+                      }`}
                     onClick={() => {
                       if (selectedIds.includes(token.id)) {
                         setSelectedIds((pre) =>

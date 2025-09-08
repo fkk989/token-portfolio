@@ -19,8 +19,8 @@ export const WatchList = () => {
       {/* buttons */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-[5px]">
-          <Star />
-          <span className="text-[#F4F4F5] text-[24px] font-[500]">
+          <Star className="text-[20px] h-[20px]" />
+          <span className="text-[#F4F4F5] text-[20px] lg:text-[24px] font-[500]">
             Watchlist
           </span>
         </div>
@@ -30,13 +30,13 @@ export const WatchList = () => {
             className="flex justify-center items-center gap-[5px] bg-[var(--surface-bg)] hover:bg-[var(--surface-bg-hover)] rounded-[6px]"
             onClick={() => refreshCoins()}
           >
-            <Refresh /> <span>Refresh Prices</span>
+            <Refresh /> <span className="hidden lg:block">Refresh Prices</span>
           </Button>
           <Button
             onClick={() => setOpenAddtokenModal(true)}
-            className="flex justify-center items-center gap-[5px] bg-[var(--brand-accent)] hover:bg-[var(--brand-accent-hover)] text-black rounded-[6px]"
+            className="h-[36px] flex justify-center items-center gap-[5px] bg-[var(--brand-accent)] hover:bg-[var(--brand-accent-hover)] text-black rounded-[6px]"
           >
-            <Plus /> <span>Add Token</span>
+            <Plus /> <span className="text-[15px]">Add Token</span>
           </Button>
         </div>
       </div>

@@ -16,7 +16,7 @@ export const PortfolioSummary = () => {
     }
   }, []);
   return (
-    <div className="w-full h-[100vh] lg:h-[30vh] flex max-sm:flex-col justify-between items-center  bg-[var(--surface-bg)] rounded-[12px] p-[24px]">
+    <div className="w-full h-full lg:h-[30vh] flex max-sm:flex-col justify-between items-center  bg-[var(--surface-bg)] rounded-[12px] p-[24px]">
       {/* right side */}
       <div className="w-full lg:w-[50%] h-fit lg:h-full flex flex-col lg:justify-between max-sm:gap-[20px]">
         <div className="flex flex-col max-sm:gap-[20px]">

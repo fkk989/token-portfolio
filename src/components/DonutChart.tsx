@@ -34,7 +34,7 @@ const CustomLegend = (props: any) => {
 
   return (
     <ul
-      className="w-full max-sm:max-h-[200px] fade-in1s lg:fade-in max-sm:mt-[20px]"
+      className="w-full max-sm:max-h-[200px] fade-in1s lg:fade-in max-sm:mt-[20px] sm:pt-[20px]"
       style={{ listStyle: "none", margin: 0, padding: 0 }}
     >
       {payload
@@ -133,38 +133,39 @@ export const DesktopDonutChart: React.FC<DonutChartProp> = ({ data }) => {
 export const MobileDonutChart: React.FC<DonutChartProp> = ({ data }) => {
 
   return (
-      <ResponsiveContainer
-        width="100%"
-        height="90%"
-        className={"relative flex justify-start lg:hidden"}
-      >
-        <PieChart className="w-[40%]">
-          <Tooltip content={CustomTooltip} />
-          <Pie
-            data={data}
-            dataKey="value"
-            nameKey="name"
-            innerRadius="40%"
-            outerRadius="100%"
-            stroke="#fff"
-            paddingAngle={1}
-          />
+    <ResponsiveContainer
+      width="100%"
+      height="90%"
+      className={"relative flex justify-start lg:hidden"}
+    >
+      <PieChart className="w-[40%]">
+        <Tooltip content={CustomTooltip} />
+        <Pie
+          data={data}
+          dataKey="value"
+          nameKey="name"
+          innerRadius="40%"
+          outerRadius="100%"
+          stroke="#fff"
+          paddingAngle={1}
+        />
 
-          <Legend
-            wrapperStyle={{
-              width: `100%`,
-              height: "55%",
-              position: "absolute",
-              right: 0,
-              overflow: "scroll",
-            }}
-            className="w-full"
-            verticalAlign="bottom"
-            content={(props) => {
-              return <CustomLegend {...props} />;
-            }}
-          />
-        </PieChart>
-      </ResponsiveContainer>
+        <Legend
+          wrapperStyle={{
+            width: `100%`,
+            height: "55%",
+            position: "absolute",
+            bottom: "-10px",
+            right: 0,
+            overflow: "scroll",
+          }}
+          className="w-full"
+          verticalAlign="bottom"
+          content={(props) => {
+            return <CustomLegend {...props} />;
+          }}
+        />
+      </PieChart>
+    </ResponsiveContainer>
   );
 };

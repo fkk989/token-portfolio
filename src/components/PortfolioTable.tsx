@@ -49,7 +49,7 @@ export default function PortfolioTable() {
         <TableBody className="w-full">
           {paginatedTokens.map((token) => {
             return (
-              <TableRow className="w-full" style={{ borderColor: "#27272a" }}>
+              <TableRow key={token.slug} className="w-full" style={{ borderColor: "#27272a" }}>
                 <TableCell
                   className={cn(cellStyle, "w-1/3 flex items-center gap-[5px]")}
                 >
@@ -98,7 +98,7 @@ export default function PortfolioTable() {
             );
           })}
         </TableBody>
-         <TableFooter className="max-sm:w-[1000px]">
+        <TableFooter className="max-sm:w-[1000px]">
           {!paginatedTokens.length ? (
             <TableRow>
               <TableCell colSpan={7} className="">
