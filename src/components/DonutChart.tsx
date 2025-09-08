@@ -1,5 +1,3 @@
-"use client";
-
 import type { PortfolioState } from "@/redux/features/portfolio/portfolioTypes";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -31,12 +29,12 @@ const CustomTooltip = ({ active, payload }: TooltipProps<any, any>) => {
 };
 
 // Custom legend to color match labels
-const renderLegend = (props: any) => {
+const CustomLegend = (props: any) => {
   const { payload } = props as { payload: [] };
 
   return (
     <ul
-      className="w-full fade-in"
+      className="w-full max-sm:max-h-[200px] fade-in1s lg:fade-in max-sm:mt-[20px]"
       style={{ listStyle: "none", margin: 0, padding: 0 }}
     >
       {payload
@@ -47,7 +45,7 @@ const renderLegend = (props: any) => {
             style={{
               color: entry.color,
             }}
-            className="mb-[8px] text-[16px] font-[500] flex items-center justify-between"
+            className=" mt-[20px] text-[16px] font-[500] flex items-center justify-between"
           >
             <span>{entry.value}</span>{" "}
             <span className="text-[var(--text-secondary)]">
@@ -63,7 +61,7 @@ interface DonutChartProp {
   data: PortfolioState["tokens"];
 }
 
-export const DonutChart: React.FC<DonutChartProp> = ({ data }) => {
+export const DesktopDonutChart: React.FC<DonutChartProp> = ({ data }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [pieWidth, setPieWidth] = useState<number>(0);
 
@@ -74,7 +72,7 @@ export const DonutChart: React.FC<DonutChartProp> = ({ data }) => {
   return (
     <div
       ref={containerRef}
-      className="relative flex items-center justify-center w-full h-[400px]"
+      className="hidden relative lg:flex items-center justify-center w-full h-[400px]"
     >
       <ResponsiveContainer
         width="100%"
@@ -117,15 +115,56 @@ export const DonutChart: React.FC<DonutChartProp> = ({ data }) => {
                 position: "absolute",
                 right: 0,
                 paddingLeft: "25px",
-                overflowY: "scroll",
+                overflow: "scroll",
               }}
               className="w-full"
               verticalAlign="middle"
-              content={renderLegend}
+              content={(props) => {
+                return <CustomLegend {...props} />;
+              }}
             />
           )}
         </PieChart>
       </ResponsiveContainer>
     </div>
+  );
+};
+
+export const MobileDonutChart: React.FC<DonutChartProp> = ({ data }) => {
+
+  return (
+      <ResponsiveContainer
+        width="100%"
+        height="90%"
+        className={"relative flex justify-start lg:hidden"}
+      >
+        <PieChart className="w-[40%]">
+          <Tooltip content={CustomTooltip} />
+          <Pie
+            data={data}
+            dataKey="value"
+            nameKey="name"
+            innerRadius="40%"
+            outerRadius="100%"
+            stroke="#fff"
+            paddingAngle={1}
+          />
+
+          <Legend
+            wrapperStyle={{
+              width: `100%`,
+              height: "55%",
+              position: "absolute",
+              right: 0,
+              overflow: "scroll",
+            }}
+            className="w-full"
+            verticalAlign="bottom"
+            content={(props) => {
+              return <CustomLegend {...props} />;
+            }}
+          />
+        </PieChart>
+      </ResponsiveContainer>
   );
 };

@@ -2,6 +2,7 @@ import {
   Table,
   TableBody,
   TableCell,
+  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -29,7 +30,7 @@ export default function PortfolioTable() {
 
   return (
     <div className="w-full rounded-[12px] overflow-hidden border-[1px] border-[var(--border-primary)]">
-      <Table className="w-full">
+      <Table className="w-full max-sm:w-[1000px]">
         <TableHeader className="w-full h-[48px] bg-[var(--surface-bg)]">
           <TableRow
             style={{
@@ -97,45 +98,58 @@ export default function PortfolioTable() {
             );
           })}
         </TableBody>
+         <TableFooter className="max-sm:w-[1000px]">
+          {!paginatedTokens.length ? (
+            <TableRow>
+              <TableCell colSpan={7} className="">
+                <div className="w-full h-[48px] flex items-center justify-center text-[var(--text-secondary)]">
+                  No tokne yet
+                </div>
+              </TableCell>
+            </TableRow>
+          ) : (
+            <></>
+          )}
+          {paginatedTokens.length ? (
+            <TableRow className="w-full">
+              <TableCell colSpan={7}>
+                <div className="w-full h-[48px] flex items-center border-t border-[var(--border-primary)] px-[15px]">
+                  <div className="w-full flex items-center justify-between text-[var(--text-secondary)]">
+                    <div>
+                      {startIndex + 1} - {Math.min(endIndex, tokens.length)} of{" "}
+                      {tokens.length} results
+                    </div>
+                    <div className="flex items-center gap-[8px]">
+                      <span>
+                        Page {page} of {totalPages}
+                      </span>
+                      <Button
+                        className="bg-transparent hover:bg-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+                        onClick={() => setPage((p) => Math.max(p - 1, 1))}
+                        disabled={page === 1}
+                      >
+                        Prev
+                      </Button>
+                      <Button
+                        className="bg-transparent hover:bg-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+                        onClick={() =>
+                          setPage((p) => Math.min(p + 1, totalPages))
+                        }
+                        disabled={page === totalPages}
+                      >
+                        Next
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </TableCell>
+            </TableRow>
+          ) : (
+            <></>
+          )}
+        </TableFooter>
       </Table>
-      {!paginatedTokens.length ? (
-        <div className="w-full h-[48px] flex items-center justify-center text-[var(--text-secondary)]">
-          No tokne yet
-        </div>
-      ) : (
-        <></>
-      )}
-      {paginatedTokens.length ? (
-        <div className="w-full h-[48px] flex items-center border-t border-[var(--border-primary)] px-[15px]">
-          <div className="w-full flex items-center justify-between text-[var(--text-secondary)]">
-            <div>
-              {startIndex + 1} - {Math.min(endIndex, tokens.length)} of{" "}
-              {tokens.length} results
-            </div>
-            <div className="flex items-center gap-[8px]">
-              <span>
-                Page {page} of {totalPages}
-              </span>
-              <Button
-                className="bg-transparent hover:bg-transparent disabled:opacity-50 disabled:cursor-not-allowed"
-                onClick={() => setPage((p) => Math.max(p - 1, 1))}
-                disabled={page === 1}
-              >
-                Prev
-              </Button>
-              <Button
-                className="bg-transparent hover:bg-transparent disabled:opacity-50 disabled:cursor-not-allowed"
-                onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
-                disabled={page === totalPages}
-              >
-                Next
-              </Button>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <></>
-      )}
+
     </div>
   );
 }
