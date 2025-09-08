@@ -12,7 +12,6 @@ export function WatchlistDrawer() {
         const height = window.innerHeight
         // Example: make first snap 10% of device height instead of fixed 200px
         const firstSnap = `${Math.round(height * 0.22)}px`
-        console.log("First Snap: ", firstSnap)
         setSnapPoints([firstSnap, 1])
     }, [])
     if (!snapPoints.length) return <></>
@@ -26,7 +25,7 @@ export function WatchlistDrawer() {
             snapPoints={snapPoints}
             activeSnapPoint={snapPoints[0]}
         >
-            <DrawerContent className="w-full h-[100vh] bg-[var(--body-bg)] border-none px-[10px]">
+            <DrawerContent className="lg:hidden w-full h-[100vh] bg-[var(--body-bg)] border-none px-[10px]">
                 <div className="w-full flex items-center justify-center">
                     <div
                         id="watchlist-drawer-container"
