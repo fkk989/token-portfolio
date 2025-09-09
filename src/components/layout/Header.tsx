@@ -1,6 +1,5 @@
-import { Wallet } from "../icons/Wallet";
 import MainIcon from "../icons/NavIcon";
-import { Button } from "../ui/button";
+import { CustomConnectButton } from './CustomConnectButton';
 
 export const Header = () => {
   return (
@@ -11,9 +10,9 @@ export const Header = () => {
           Token Portfolio
         </h1>
       </div>
-      <Button className="flex justify-center items-center gap-[5px] bg-[var(--brand-accent)] hover:bg-[var(--brand-accent-hover)] rounded-full text-black">
-        <Wallet /> <span>Connect Wallet</span>
-      </Button>
+
+      <CustomConnectButton />
+
     </div>
   );
 };

@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import type { RootState } from "@/redux/store";
 import { useState } from "react";
 import { TokenActions } from "../watchlist/TokenAction";
-import { HoldingUpdateInput } from "./HoldingUpdateInput";
+import { HoldingUpdateInput } from "../watchlist/HoldingUpdateInput";
 
 const cellStyle = "w-1/10 h-[48px] text-[var(--text-secondary)] px-[15px]";
 

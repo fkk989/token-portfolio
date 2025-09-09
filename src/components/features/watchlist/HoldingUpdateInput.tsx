@@ -16,12 +16,10 @@ export const HoldingUpdateInput = ({
     <div className="flex items-center gap-[12px]">
       <Input
         type="number"
+        value={holding}
         className="w-[109px] h-[32px] box-shadow-accent rounded-[6px]"
         onChange={(e) => {
-          const value = Number(e.target.value);
-          if (value && !isNaN(value)) {
-            setHolding(value);
-          }
+          setHolding(Number(e.target.value));
         }}
         autoFocus
       />
