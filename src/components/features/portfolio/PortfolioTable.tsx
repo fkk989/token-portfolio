@@ -7,13 +7,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "./ui/button";
-import { Sparkline } from "./Sparkline";
+import { Button } from "../../ui/button";
+import { Sparkline } from "../../charts/Sparkline";
 import { cn } from "@/lib/utils";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/redux/store";
 import { useState } from "react";
-import { TokenActions } from "./TokenAction";
+import { TokenActions } from "../watchlist/TokenAction";
 import { HoldingUpdateInput } from "./HoldingUpdateInput";
 
 const cellStyle = "w-1/10 h-[48px] text-[var(--text-secondary)] px-[15px]";

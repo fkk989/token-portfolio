@@ -5,7 +5,7 @@ import {
   PopoverContent,
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
-import { Pencil, Trash, Ellipsis } from "./icons";
+import { Pencil, Trash, Ellipsis } from "../../icons";
 import { useDispatch } from "react-redux";
 import {
   removeToken,

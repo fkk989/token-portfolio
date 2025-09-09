@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { AddTokenModal } from "./AddTokenModal";
-import { Plus } from "./icons/Plus";
-import { Refresh } from "./icons/Refresh";
-import { Star } from "./icons/Star";
-import PortfolioTable from "./PortfolioTable";
-import { Button } from "./ui/button";
+import { Plus } from "../../icons/Plus";
+import { Refresh } from "../../icons/Refresh";
+import { Star } from "../../icons/Star";
+import PortfolioTable from "../portfolio/PortfolioTable";
+import { Button } from "../../ui/button";
 import { useCoinGecko } from "@/hooks/useCoinGecko";
 
 export const WatchList = () => {

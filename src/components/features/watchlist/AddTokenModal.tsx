@@ -7,7 +7,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-import { Star } from "./icons";
+import { Star } from "../../icons";
 import { cn } from "@/lib/utils";
 import { useCoinGecko } from "@/hooks/useCoinGecko";
 import { DialogDescription } from "@radix-ui/react-dialog";

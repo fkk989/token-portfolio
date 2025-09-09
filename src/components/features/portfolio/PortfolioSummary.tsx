@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { DesktopDonutChart, MobileDonutChart } from "./DonutChart";
-import type { RootState } from "../redux/store";
+import { DesktopDonutChart, MobileDonutChart } from "../../charts/DonutChart";
+import type { RootState } from "../../../redux/store";
 import { useEffect } from "react";
 import { setTokens } from "@/redux/features/portfolio/portfolioSlice";
 

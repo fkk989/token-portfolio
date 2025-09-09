@@ -1,9 +1,9 @@
-import { PortfolioSummary } from "./components/PortfolioSummary";
-import { Header } from "./components/Header";
-import { WatchList } from "./components/WatchList";
+import { PortfolioSummary } from "./components/features/portfolio/PortfolioSummary";
+import { Header } from "@/components/layout/Header";
+import { WatchList } from "@/components/features/watchlist/WatchList";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-import { WatchlistDrawer } from "./components/WatchListDrawer";
+import { WatchlistDrawer } from "./components/features/watchlist/WatchListDrawer";
 
 function App() {
   return (

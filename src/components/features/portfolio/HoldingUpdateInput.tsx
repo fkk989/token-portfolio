@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
+import { Input } from "../../ui/input";
+import { Button } from "../../ui/button";
 import type { PortfolioState } from "@/redux/features/portfolio/portfolioTypes";
 import { useDispatch } from "react-redux";
 import { updateToken } from "@/redux/features/portfolio/portfolioSlice";

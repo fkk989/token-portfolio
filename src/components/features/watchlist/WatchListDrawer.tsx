@@ -1,6 +1,6 @@
 import { Drawer, DrawerContent } from "@/components/ui/drawer"
 import { Handle } from "vaul" // adjust import if different
-import { WatchList } from "@/components/WatchList"
+import { WatchList } from "@/components/features/watchlist/WatchList"
 
 export function WatchlistDrawer() {
     return (
