@@ -8,7 +8,8 @@ import { WatchlistDrawer } from "./components/features/watchlist/WatchListDrawer
 function App() {
   return (
     <Provider store={store}>
-      <div className="w-[100vw] max-sm:h-[100vh] lg:min-h-[100vh] bg-[#212124]">
+      <div className="h-fit overflow-scroll max-sm:bg-[var(--surface-bg)]">
+      <div className="w-[100vw] max-sm:h-[100vh] lg:min-h-[100vh] lg:bg-[#212124]">
         {/* Header */}
         {/* Header */}
         <div className="w-full h-[80px] flex items-center sticky top-0 bg-[var(--body-bg)] max-sm:border-b max-sm:border-[var(--border-primary)] z-[2]">
@@ -28,6 +29,7 @@ function App() {
           </div>
 
         </div>
+      </div>
       </div>
     </Provider>
   );

@@ -132,10 +132,13 @@ export const DesktopDonutChart: React.FC<DonutChartProp> = ({ data }) => {
 
 export const MobileDonutChart: React.FC<DonutChartProp> = ({ data }) => {
 
+  const totalValue = data.reduce((acc, token)=> acc + token.value ,0)
+
   return (
-    <ResponsiveContainer
+   <div className="lg:hidden w-full h-full flex flex-col gap-[20px]">
+     <ResponsiveContainer
       width="100%"
-      height="90%"
+      height="40%"
       className={"relative flex justify-start lg:hidden"}
     >
       <PieChart className="w-[40%]">
@@ -149,23 +152,28 @@ export const MobileDonutChart: React.FC<DonutChartProp> = ({ data }) => {
           stroke="#fff"
           paddingAngle={1}
         />
-
-        <Legend
-          wrapperStyle={{
-            width: `100%`,
-            height: "55%",
-            position: "absolute",
-            bottom: "-10px",
-            right: 0,
-            overflow: "scroll",
-          }}
-          className="w-full"
-          verticalAlign="bottom"
-          content={(props) => {
-            return <CustomLegend {...props} />;
-          }}
-        />
       </PieChart>
     </ResponsiveContainer>
+    {/* Custom legend */}
+    <div className="w-full h-[50%] overflow-hidden mb-[40px]">
+       <ul className="w-full h-full flex flex-col gap-[20px] overflow-scroll">
+        {data.filter((token) => token.value)
+        .map((token, index: number) => (
+          <li
+            key={`item-${index}`}
+            style={{
+              color: token.fill,
+            }}
+            className="text-[16px] font-[500] flex items-center justify-between"
+          >
+            <span>{token.name}</span>{" "}
+            <span className="text-[var(--text-secondary)]">
+              {((token.value / totalValue) * 100).toFixed(2)}%
+            </span>
+          </li>
+        ))}
+       </ul>
+    </div>
+   </div>
   );
 };
